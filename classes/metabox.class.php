@@ -51,7 +51,7 @@ class CSFramework_Metabox extends CSFramework_Abstract{
   public function add_meta_box( $post_type ) {
 
     foreach ( $this->options as $value ) {
-      if( $post_type == $value['post_type'] ) {
+      if( $post_type == $value['post_type'] && get_post_format() === $value['post_format']) {
         add_meta_box( $value['id'], $value['title'], array( &$this, 'render_meta_box_content' ), $value['post_type'], $value['context'], $value['priority'], $value );
       }
     }
